@@ -1,6 +1,6 @@
 {
   "name": "react-native-slider-thumb-emoji",
-  "version": "0.11.0",
+  "version": "0.11.1",
   "description": "A pure JavaScript <Slider /> component for react-native",
   "main": "src/Slider.js",
   "files": [
@@ -17,8 +17,7 @@
   "scripts": {
     "clean": "rimraf lib",
     "start": "node_modules/react-native/packager/packager.sh",
-    "build": "babel src --out-dir lib",
-    "prepublish": "npm run clean && npm run build"
+    "build": "babel src --out-dir lib"
   },
   "repository": {
     "type": "git",
