@@ -1,10 +1,9 @@
 {
-  "name": "react-native-slider",
+  "name": "react-native-slider-thumb-emoji",
   "version": "0.11.0",
   "description": "A pure JavaScript <Slider /> component for react-native",
-  "main": "lib/Slider.js",
+  "main": "src/Slider.js",
   "files": [
-    "lib",
     "src"
   ],
   "author": "Zachary Knowles",
@@ -23,8 +22,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:zknowles/react-native-slider.git"
+    "url": "git@github.com:zknowles/react-native-slider-thumb-emoji.git"
   },
+  "bugs": {
+    "url": "https://github.com/zknowles/react-native-slider-thumb-emoji/issues"
+  },
+  "homepage": "https://github.com/zknowles/react-native-slider-thumb-emoji",
   "dependencies": {
     "prop-types": "^15.5.6"
   },
