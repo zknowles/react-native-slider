@@ -287,6 +287,7 @@ export default class Slider extends PureComponent {
           renderToHardwareTextureAndroid
           style={[mainStyles.track, trackStyle, minimumTrackStyle]}
         />
+        <Text>👍</Text>
         <Animated.View
           onLayout={this._measureThumb}
           renderToHardwareTextureAndroid
@@ -300,7 +301,6 @@ export default class Slider extends PureComponent {
             },
           ]}
         >
-          <Text>👍</Text>
           {this._renderThumbImage()}
         </Animated.View>
         <View
