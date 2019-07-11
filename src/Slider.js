@@ -299,6 +299,7 @@ export default class Slider extends PureComponent {
             },
           ]}
         >
+          <Text>👍</Text>
           {this._renderThumbImage()}
         </Animated.View>
         <View
