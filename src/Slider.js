@@ -237,7 +237,6 @@ export default class Slider extends PureComponent {
     const {
       value,
       containerSize,
-      trackSize,
       thumbSize,
       allMeasured,
     } = this.state;
@@ -268,6 +267,10 @@ export default class Slider extends PureComponent {
 
     const touchOverflowStyle = this._getTouchOverflowStyle();
 
+    const thumbEmojiStyle = {
+      marginBottom: 24,
+    }
+
     return (
       <View
         {...other}
@@ -287,7 +290,6 @@ export default class Slider extends PureComponent {
           renderToHardwareTextureAndroid
           style={[mainStyles.track, trackStyle, minimumTrackStyle]}
         />
-        <Text>👍</Text>
         <Animated.View
           onLayout={this._measureThumb}
           renderToHardwareTextureAndroid
@@ -301,6 +303,7 @@ export default class Slider extends PureComponent {
             },
           ]}
         >
+          <Text style={thumbEmojiStyle}>👍</Text>
           {this._renderThumbImage()}
         </Animated.View>
         <View
