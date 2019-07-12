@@ -277,7 +277,7 @@ export default class Slider extends PureComponent {
         style={[mainStyles.container, style]}
         onLayout={this._measureContainer}
       >
-        <Text style={thumbEmojiStyle}>👍</Text>
+        <Animated.Text style={thumbEmojiStyle}>👍</Animated.Text>
         <View
           style={[
             { backgroundColor: maximumTrackTintColor },
