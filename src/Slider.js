@@ -268,6 +268,7 @@ export default class Slider extends PureComponent {
     const touchOverflowStyle = this._getTouchOverflowStyle();
 
     const thumbEmojiStyle = {
+      position: 'absolute',
       transform: [{ translateX: thumbLeft }, { translateY: 0 }]
     }
 
