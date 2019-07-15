@@ -268,8 +268,10 @@ export default class Slider extends PureComponent {
     const touchOverflowStyle = this._getTouchOverflowStyle();
 
     const thumbEmojiStyle = {
-      position: 'absolute',
-      transform: [{ translateX: thumbLeft }, { translateY: 0 }]
+      bottom: 10,
+      left: 8,
+      fontSize: 40,
+      transform: [{ translateX: thumbLeft }, { translateY: 0 }, { scale: value }],
     }
 
     return (
@@ -278,7 +280,6 @@ export default class Slider extends PureComponent {
         style={[mainStyles.container, style]}
         onLayout={this._measureContainer}
       >
-        <Animated.Text style={thumbEmojiStyle}>👍</Animated.Text>
         <View
           style={[
             { backgroundColor: maximumTrackTintColor },
@@ -312,6 +313,7 @@ export default class Slider extends PureComponent {
           style={[defaultStyles.touchArea, touchOverflowStyle]}
           {...this._panResponder.panHandlers}
         >
+          <Animated.Text style={thumbEmojiStyle}>👍</Animated.Text>
           {debugTouchArea === true &&
             this._renderDebugThumbTouchRect(minimumTrackWidth)}
         </View>
