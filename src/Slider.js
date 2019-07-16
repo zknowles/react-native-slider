@@ -8,7 +8,6 @@ import {
   View,
   Easing,
   ViewPropTypes,
-  I18nManager,
   Text,
 } from 'react-native';
 
@@ -243,15 +242,11 @@ export default class Slider extends PureComponent {
     const mainStyles = styles || defaultStyles;
     const thumbLeft = value.interpolate({
       inputRange: [minimumValue, maximumValue],
-      outputRange: I18nManager.isRTL
-        ? [0, -(containerSize.width - thumbSize.width)]
-        : [0, containerSize.width - thumbSize.width],
-      // extrapolate: 'clamp',
+      outputRange: [0, containerSize.width - thumbSize.width],
     });
     const minimumTrackWidth = value.interpolate({
       inputRange: [minimumValue, maximumValue],
       outputRange: [0, containerSize.width - thumbSize.width],
-      // extrapolate: 'clamp',
     });
     const valueVisibleStyle = {};
     if (!allMeasured) {
@@ -267,11 +262,21 @@ export default class Slider extends PureComponent {
 
     const touchOverflowStyle = this._getTouchOverflowStyle();
 
-    const thumbEmojiStyle = {
-      bottom: 10,
+    const emojiTranslateValue = value.interpolate({
+      inputRange: [minimumValue, maximumValue],
+      outputRange: [0, containerSize.width - thumbSize.width * 2.7],
+    });
+    const emojiScaleValue = value.interpolate({
+      inputRange: [minimumValue, maximumValue],
+      outputRange: [1, 2],
+    });
+    const thumbEmojiContainerStyle = {
+      bottom: 20,
       left: 8,
-      fontSize: 40,
-      transform: [{ translateX: thumbLeft }, { translateY: 0 }, { scale: value }],
+      transform: [{ translateX: emojiTranslateValue }, { translateY: 0 }],
+    }
+    const thumbEmojiStyle = {
+      transform: [{ translateX: emojiTranslateValue }, { translateY: 0 }, { scale: emojiScaleValue }],
     }
 
     return (
@@ -313,7 +318,9 @@ export default class Slider extends PureComponent {
           style={[defaultStyles.touchArea, touchOverflowStyle]}
           {...this._panResponder.panHandlers}
         >
-          <Animated.Text style={thumbEmojiStyle}>👍</Animated.Text>
+          <Animated.View style={thumbEmojiContainerStyle}>
+            <Animated.Text style={thumbEmojiStyle}>👍</Animated.Text>
+          </Animated.View>
           {debugTouchArea === true &&
             this._renderDebugThumbTouchRect(minimumTrackWidth)}
         </View>
@@ -417,8 +424,7 @@ export default class Slider extends PureComponent {
     (this.props.maximumValue - this.props.minimumValue);
 
   _getThumbLeft = (value: number) => {
-    const nonRtlRatio = this._getRatio(value);
-    const ratio = I18nManager.isRTL ? 1 - nonRtlRatio : nonRtlRatio;
+    const ratio = this._getRatio(value);
     return (
       ratio * (this.state.containerSize.width - this.state.thumbSize.width)
     );
@@ -428,8 +434,7 @@ export default class Slider extends PureComponent {
     const length = this.state.containerSize.width - this.state.thumbSize.width;
     const thumbLeft = this._previousLeft + gestureState.dx;
 
-    const nonRtlRatio = thumbLeft / length;
-    const ratio = I18nManager.isRTL ? 1 - nonRtlRatio : nonRtlRatio;
+    const ratio = thumbLeft / length;
 
     if (this.props.step) {
       return Math.max(
