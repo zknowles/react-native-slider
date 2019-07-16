@@ -314,7 +314,6 @@ export default class Slider extends PureComponent {
           {this._renderThumbImage()}
         </Animated.View>
         <View
-          renderToHardwareTextureAndroid
           style={[defaultStyles.touchArea, touchOverflowStyle]}
           {...this._panResponder.panHandlers}
         >
