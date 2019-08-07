@@ -8,7 +8,6 @@ import {
   View,
   Easing,
   ViewPropTypes,
-  Text,
 } from 'react-native';
 
 import PropTypes from 'prop-types';
@@ -544,10 +543,10 @@ export default class Slider extends PureComponent {
     return new Rect(
       touchOverflowSize.width / 2 +
         this._getThumbLeft(this._getCurrentValue()) +
-        (state.thumbSize.width - props.thumbTouchSize.width) / 2,
+        (state.thumbSize.width - props.thumbTouchSize.width - 20) / 2,
       touchOverflowSize.height / 2 +
         (state.containerSize.height - props.thumbTouchSize.height) / 2,
-      props.thumbTouchSize.width,
+      props.thumbTouchSize.width + 20,
       props.thumbTouchSize.height,
     );
   };
