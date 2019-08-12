@@ -317,7 +317,7 @@ export default class Slider extends PureComponent {
           {...this._panResponder.panHandlers}
         >
           <Animated.View style={thumbEmojiContainerStyle}>
-            <Animated.Text style={thumbEmojiStyle}>👍</Animated.Text>
+            <Animated.Image source={{ uri: require("../assets/thumbup.png") }} style={thumbEmojiStyle} />
           </Animated.View>
           {debugTouchArea === true &&
             this._renderDebugThumbTouchRect(minimumTrackWidth)}

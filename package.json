@@ -1,6 +1,6 @@
 {
   "name": "react-native-slider-thumb-emoji",
-  "version": "0.12.2",
+  "version": "0.13.0",
   "description": "A pure JavaScript <Slider /> component for react-native",
   "main": "src/Slider.js",
   "files": [
