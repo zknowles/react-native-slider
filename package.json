@@ -1,7 +1,7 @@
 {
-  "name": "react-native-slider-thumb-emoji",
-  "version": "0.13.0",
-  "description": "A pure JavaScript <Slider /> component for react-native",
+  "name": "react-native-slider-scaling-image",
+  "version": "0.14.0",
+  "description": "A pure JavaScript <Slider /> component for react-native with an image above the thumb that scales according to the slider value.",
   "main": "src/Slider.js",
   "files": [
     "src"
@@ -21,12 +21,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com:zknowles/react-native-slider-thumb-emoji.git"
+    "url": "https://github.com:zknowles/react-native-slider-scaling-image.git"
   },
   "bugs": {
-    "url": "https://github.com/zknowles/react-native-slider-thumb-emoji/issues"
+    "url": "https://github.com/zknowles/react-native-slider-scaling-image/issues"
   },
-  "homepage": "https://github.com/zknowles/react-native-slider-thumb-emoji",
+  "homepage": "https://github.com/zknowles/react-native-slider-scaling-image",
   "dependencies": {
     "prop-types": "^15.5.6"
   },

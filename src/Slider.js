@@ -148,6 +148,11 @@ export default class Slider extends PureComponent {
     thumbImage: Image.propTypes.source,
 
     /**
+     * Sets an image for the scaling image.
+     */
+    scalingImage: Image.propTypes.source,
+
+    /**
      * Set this to true to visually see the thumb touch rect in green.
      */
     debugTouchArea: PropTypes.bool,
@@ -221,6 +226,7 @@ export default class Slider extends PureComponent {
       maximumTrackTintColor,
       thumbTintColor,
       thumbImage,
+      scalingImage,
       styles,
       style,
       trackStyle,
@@ -261,21 +267,23 @@ export default class Slider extends PureComponent {
 
     const touchOverflowStyle = this._getTouchOverflowStyle();
 
-    const emojiTranslateValue = value.interpolate({
+    const imageTranslateValue = value.interpolate({
       inputRange: [minimumValue, maximumValue],
-      outputRange: [0, containerSize.width - thumbSize.width * 2.7],
+      outputRange: [0, containerSize.width - thumbSize.width * 5],
     });
-    const emojiScaleValue = value.interpolate({
+    const imageScaleValue = value.interpolate({
       inputRange: [minimumValue, maximumValue],
       outputRange: [1, 2],
     });
-    const thumbEmojiContainerStyle = {
+    const scalingImageContainerStyle = {
       bottom: 20,
       left: 8,
-      transform: [{ translateX: emojiTranslateValue }, { translateY: 0 }],
+      transform: [{ translateX: imageTranslateValue }, { translateY: 0 }],
     }
-    const thumbEmojiStyle = {
-      transform: [{ translateX: emojiTranslateValue }, { translateY: 0 }, { scale: emojiScaleValue }],
+    const scalingImageStyle = {
+      height: 16,
+      width: 16,
+      transform: [{ translateX: imageTranslateValue }, { translateY: 0 }, { scale: imageScaleValue }],
     }
 
     return (
@@ -316,9 +324,11 @@ export default class Slider extends PureComponent {
           style={[defaultStyles.touchArea, touchOverflowStyle]}
           {...this._panResponder.panHandlers}
         >
-          <Animated.View style={thumbEmojiContainerStyle}>
-            <Animated.Image source={{ uri: require("../assets/thumbup.png") }} style={thumbEmojiStyle} />
-          </Animated.View>
+          {scalingImage && (
+            <Animated.View style={scalingImageContainerStyle}>
+              <Animated.Image source={scalingImage} style={scalingImageStyle} />
+            </Animated.View>
+          )}
           {debugTouchArea === true &&
             this._renderDebugThumbTouchRect(minimumTrackWidth)}
         </View>
